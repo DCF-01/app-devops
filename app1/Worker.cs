@@ -18,7 +18,7 @@ public sealed class Worker : BackgroundService
                 try
                 {
                     using var client = new HttpClient();
-                    var pingUri = "http://localhost:5002";
+                    var pingUri = "http://app2-service.default.svc.cluster.local";
 
                     client.BaseAddress = new Uri(pingUri);
                     var res = client.GetAsync("/api/ping");

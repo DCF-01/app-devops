@@ -59,19 +59,11 @@ pipeline {
         }
 
         stage('deploy') {
-            agent {
-                label 'ag_ubuntu'
+             agent {
+                label 'ag-default'
             }
-            options { skipDefaultCheckout() }
             steps {
-                git branch: 'master',
-                credentialsId: 'da0539b8-28de-4780-b7db-a34fe4bd6dc6',
-                url: 'http://10.0.2.2:3000/gitea/example.git'
-
-                sh 'sudo docker login 10.0.2.2:8082 -u $NEXUS_USERNAME -p $NEXUS_PASSWORD'
-                sh 'sudo docker login 10.0.2.2:8083 -u $NEXUS_USERNAME -p $NEXUS_PASSWORD'
-                sh 'docker pull 10.0.2.2:8082/repository/api'
-                sh 'cat /etc/os-release'
+                sh 'kubectl apply -f ./manifests/'
             }
         }
     }
