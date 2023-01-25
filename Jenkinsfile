@@ -11,16 +11,25 @@ pipeline {
     }
 
     stages {
-        stage('build') {
+        stage('build-app1') {
             agent {
                 label 'ag-default'
             }
             steps {
-                sh 'docker compose build api'
+                sh 'docker compose build app1'
             }
         }
 
-        stage('test') {
+        stage('build-app2') {
+            agent {
+                label 'ag-default'
+            }
+            steps {
+                sh 'docker compose build app2'
+            }
+        }
+
+        stage('run-test') {
             agent {
                 label 'ag-default'
             }
