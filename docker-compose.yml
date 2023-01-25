@@ -1,0 +1,15 @@
+version: "3.9"
+services:
+  app1:
+    image: ${NEXUST_REPO_HOST}:8082/repository/app1:${VERSION}
+    build:
+      dockerfile: ./app1/Dockerfile
+  app2:
+    image: ${NEXUST_REPO_HOST}:8083/repository/app2:${VERSION}
+    build:
+      dockerfile: ./app2/Dockerfile
+  tests:
+    image: ${NEXUST_REPO_HOST}:8084/repository/tests:${VERSION}
+    build:
+      dockerfile: ./tests/Dockerfile
+      
