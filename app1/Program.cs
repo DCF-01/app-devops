@@ -1,10 +1,26 @@
-﻿while (true)
+using app1;
+
+var builder = WebApplication.CreateBuilder(args);
+
+// Add services to the container.
+
+builder.Services.AddControllers();
+// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
+builder.Services.AddHostedService<Worker>();
+
+var app = builder.Build();
+
+// Configure the HTTP request pipeline.
+if (app.Environment.IsDevelopment())
 {
-    using var client = new HttpClient();
-    var pingUri = "https://google.com";
-        
-    client.BaseAddress = new Uri(pingUri);
-    var res = client.GetAsync("/");
-    Console.WriteLine($"App1 pinged {pingUri}, response: {(int)res.Result.StatusCode} {res.Result.StatusCode}");
-    Thread.Sleep(1000);
+    app.UseSwagger();
+    app.UseSwaggerUI();
 }
+
+
+app.MapControllers();
+
+app.Run();
+

@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
       - name: app1
-        image: api:latest
+        image: localhost:8082/repository/app1:latest
         ports:
         - containerPort: 5000

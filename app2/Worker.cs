@@ -1,4 +1,4 @@
-namespace app1;
+namespace app2;
 
 public sealed class Worker : BackgroundService
 {
@@ -18,10 +18,10 @@ public sealed class Worker : BackgroundService
                 try
                 {
                     using var client = new HttpClient();
-                    var pingUri = "http://localhost:6001";
+                    var pingUri = "http://localhost:5000";
 
                     client.BaseAddress = new Uri(pingUri);
-                    var res = client.GetAsync("/ping");
+                    var res = client.GetAsync("/api/ping");
                     Console.WriteLine(
                         $"App2 pinged {pingUri}, response: {(int)res.Result.StatusCode} {res.Result.StatusCode}");
                     Thread.Sleep(1500);
