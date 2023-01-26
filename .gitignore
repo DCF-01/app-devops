@@ -373,3 +373,5 @@ docker-registry/
 gitea/
 jenkins/
 postgres/
+
+infra/kube/cache

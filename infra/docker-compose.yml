@@ -50,6 +50,10 @@ services:
     volumes:
     - ./jenkins:/var/jenkins_home
     - //var/run/docker.sock:/var/run/docker.sock
+    - ./infra/docker/docker:/usr/bin/docker 
+    - ./infra/docker-compose/docker-compose:/usr/bin/docker-compose
+    - ./infra/kubectl/kubectl:/usr/bin/kubectl
+    - ./infra/kube/:/var/jenkins_home/.kube/
     networks:
       - hw
   nexus:
@@ -61,16 +65,6 @@ services:
     ports:
       - "8081:8081"
       - "8082:8082"
-      - "8083:8083"
-      - "8084:8084"
-  docker-registry:
-    image: registry:2
-    ports:
-      - 5000:5000
-    volumes:
-      - ./docker-registry/:/var/lib/registry
-    networks:
-      - hw
       
 volumes:
   nexus-data: {}
