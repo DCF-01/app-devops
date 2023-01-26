@@ -13,19 +13,19 @@ pipeline {
     stages {
         stage('run-test') {
             steps {
-                sh 'docker compose build tests'
+                sh 'docker-compose build tests'
             }
         }
 
         stage('build-app1') {
             steps {
-                sh 'docker compose build app1'
+                sh 'docker-compose build app1'
             }
         }
 
         stage('build-app2') {
             steps {
-                sh 'docker compose build app2'
+                sh 'docker-compose build app2'
             }
         }
 
@@ -37,7 +37,7 @@ pipeline {
 
         stage('push-to-nexus') {
             steps {
-                sh 'docker compose push'
+                sh 'docker-compose push'
             }
         }
 
