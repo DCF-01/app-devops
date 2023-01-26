@@ -368,3 +368,8 @@ FodyWeavers.xsd
 appsettings.json
 
 .idea
+
+docker-registry/
+gitea/
+jenkins/
+postgres/

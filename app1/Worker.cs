@@ -18,11 +18,12 @@ public sealed class Worker : BackgroundService
                 try
                 {
                     using var client = new HttpClient();
-                    var pingUri = "http://app2-service.default.svc.cluster.local";
+                    var pingUri = "http://app2-service.default.svc.cluster.local:99";
+                    
 
                     client.BaseAddress = new Uri(pingUri);
                     var res = client.GetAsync("/api/ping");
-                    Console.WriteLine(
+                    _logger.LogInformation(
                         $"App1 pinged {pingUri}, response: {(int)res.Result.StatusCode} {res.Result.StatusCode}");
                     Thread.Sleep(1500);
                 }

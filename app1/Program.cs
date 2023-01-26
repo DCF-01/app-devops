@@ -9,6 +9,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddHostedService<Worker>();
+builder.WebHost.UseUrls("http://*:5000");
 
 var app = builder.Build();
 

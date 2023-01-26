@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: app1
-        image: nexus-1:8082/repository/app1:latest
+        image: nexus:8082/repository/app/app1:latest
         ports:
         - containerPort: 5000
-      
+        imagePullPolicy: Always

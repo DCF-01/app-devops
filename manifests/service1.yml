@@ -8,5 +8,5 @@ spec:
   ports:
   - name: app1-port
     protocol: TCP
-    port: 80
+    port: 99
     targetPort: 5000
