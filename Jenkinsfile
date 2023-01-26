@@ -31,7 +31,7 @@ pipeline {
 
         stage('docker-login') {
             steps {
-                sh 'docker login localhost:8082 -u $NEXUS_USERNAME -p $NEXUS_PASSWORD'
+                sh 'docker login nexus:8082 -u $NEXUS_USERNAME -p $NEXUS_PASSWORD'
             }
         }
 
