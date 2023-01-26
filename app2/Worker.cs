@@ -15,7 +15,7 @@ public sealed class Worker : BackgroundService
         {
             while (true)
             {
-                var timeStamp = "TimeStamp: "DateTime.UtcNow;
+                var timeStamp = "TimeStamp: " + DateTime.UtcNow;
                 try
                 {
                     using var client = new HttpClient();
