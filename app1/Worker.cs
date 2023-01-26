@@ -15,21 +15,21 @@ public sealed class Worker : BackgroundService
         {
             while (true)
             {
+                var timeStamp = "TimeStamp: "DateTime.UtcNow;
                 try
                 {
                     using var client = new HttpClient();
                     var pingUri = "http://app2-service.default.svc.cluster.local:99";
-                    
 
                     client.BaseAddress = new Uri(pingUri);
                     var res = client.GetAsync("/api/ping");
                     _logger.LogInformation(
-                        $"App1 pinged {pingUri}, response: {(int)res.Result.StatusCode} {res.Result.StatusCode}");
+                        $"App1 pinged {pingUri}, response: {(int)res.Result.StatusCode} {res.Result.StatusCode} {timeStamp}");
                     Thread.Sleep(1500);
                 }
                 catch (Exception e)
                 {
-                    Console.WriteLine($"Could not ping destination. Error: {e.Message}");
+                    Console.WriteLine($"Could not ping destination. Error: {e.Message} {timeStamp}");
                 }
             }
         }, stoppingToken);
